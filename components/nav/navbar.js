@@ -25,7 +25,7 @@ const NavBar = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <a className={styles.logolink} href="/">
+                <Link className={styles.logolink} href="/">
                     <div className={styles.logoWrapper}>
                         <div className={styles.logoWrapper}>
                             <Image
@@ -36,7 +36,7 @@ const NavBar = (props) => {
                             />
                         </div>
                     </div>
-                </a>
+                </Link>
                 <ul className={styles.navItems}>
                     <il className={styles.navItem} onClick={handleOnClickHome} >Home</il>
                     <il className={styles.navItem2} onClick={handleOnClickMylist}>My List</il>
