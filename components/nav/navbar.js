@@ -54,7 +54,7 @@ const NavBar = (props) => {
                         </button>
                         {showDropdown && <div className={styles.navDropdown}>
                             <div>
-                                <Link legacyBehavior href='/login'>
+                                <Link href='/login'>
                                     <a className={styles.linkName} >Sign Out</a>
                                 </Link>
                                 <div className={styles.lineWrapper}>
