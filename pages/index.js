@@ -2,20 +2,11 @@ import Head from 'next/head'
 import Banner from '../components/banner/banner'
 import SectionCards from '../components/card/section-cards'
 import NavBar from '../components/nav/navbar'
+import { getVidoes } from '../lib/videos'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const disneyVideos = [
-    {
-      imgUrl: "/static/clifford.webp",
-    },
-    {
-      imgUrl: "/static/clifford.webp",
-    },
-    {
-      imgUrl: "/static/clifford.webp",
-    },
-  ];
+  const disneyVideos =  getVidoes();
   return (
     <div className={styles.container}>
       <Head>
