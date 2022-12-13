@@ -5,8 +5,16 @@ import NavBar from '../components/nav/navbar'
 import { getVidoes } from '../lib/videos'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
-  const disneyVideos =  getVidoes();
+export async function getServerSideProps(context) {
+  const disneyVideos = await getVidoes();
+
+  return {
+    props: { disneyVideos }, // will be passed to the page component as props
+  }
+}
+
+
+export default function Home({disneyVideos}) {
   return (
     <div className={styles.container}>
       <Head>
