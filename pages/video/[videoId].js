@@ -8,15 +8,7 @@ import NavBar from '../../components/nav/navbar';
 Modal.setAppElement("#__next");
 
 export async function getStaticProps(context) {
-  //data to fetch from API
-  // const video = {
-  //   title: "Hi cute dog",
-  //   publishTime: "1990-01-01",
-  //   description:
-  //     "A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger?",
-  //   channelTitle: "Paramount Pictures",
-  //   viewCount: 10000,
-  // };
+
   const videoId = context.params.videoId;
 
   const videoArray = await getYoutubeVideoById(videoId);
