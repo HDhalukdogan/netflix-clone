@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
 const Video = ({ video }) => {
   const router = useRouter();
-  const videoId = rotuer.query.videoId;
+  const videoId = router.query.videoId;
 
   const [toggleLike, setToggleLike] = useState(false);
   const [toggleDisLike, setToggleDisLike] = useState(false);
