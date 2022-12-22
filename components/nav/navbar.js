@@ -9,12 +9,14 @@ const NavBar = () => {
 
     const [showDropdown, setShowDropdown] = useState(false)
     const [username, setUsername] = useState("")
+    const [didToken, setDidToken] = useState("");
     const router = useRouter();
     useEffect(() => {
         async function getUsername() {
             try {
                 const { email, issuer } = await magic.user.getMetadata();
-                const didToken = await magic.user.getIdToken();
+                const token = await magic.user.getIdToken();
+                setDidToken(token);
                 if (email) {
                     setUsername(email);
                 }
@@ -40,9 +42,15 @@ const NavBar = () => {
         e.preventDefault();
 
         try {
-            await magic.user.logout();
-            console.log(await magic.user.isLoggedIn());
-            router.push("/login");
+            const response = await fetch("/api/logout", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${didToken}`,
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const res = await response.json();
         } catch (error) {
             console.error("Error logging out", error);
             router.push("/login");
@@ -54,14 +62,12 @@ const NavBar = () => {
             <div className={styles.wrapper}>
                 <Link className={styles.logolink} href="/">
                     <div className={styles.logoWrapper}>
-                        <div className={styles.logoWrapper}>
-                            <Image
-                                src="/static/netflix.svg"
-                                alt="Netflix logo"
-                                width="128"
-                                height="34"
-                            />
-                        </div>
+                        <Image
+                            src="/static/netflix.svg"
+                            alt="Netflix logo"
+                            width="128"
+                            height="34"
+                        />
                     </div>
                 </Link>
                 <ul className={styles.navItems}>
