@@ -36,14 +36,14 @@ const Login = () => {
     }
 
     const handleLoginWithEmail = async () => {
-        setIsLoading(true);
         if (email) {
             //  log in a user by their email
             try {
+                setIsLoading(true);
+
                 const didToken = await magic.auth.loginWithMagicLink({
                     email,
                 });
-                console.log({ didToken });
                 if (didToken) {
                     const response = await fetch("/api/login", {
                         method: "POST",
